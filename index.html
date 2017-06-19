@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <title>SoundCloud Tracks</title>
+    <base ng-href="/"/>
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- inject:build:css -->
+    <!-- endinject -->
+</head>
+<body class="with-side-menu theme-side-ebony-clay">
+    <div ui-view="layout"></div>
+    <!-- bower:js -->
+    <script src="/vendor/jquery/dist/jquery.js"></script>
+    <script src="/vendor/bootstrap-sass/assets/javascripts/bootstrap.js"></script>
+    <script src="/vendor/angular/angular.js"></script>
+    <script src="/vendor/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="/vendor/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="/vendor/angular-animate/angular-animate.js"></script>
+    <script src="/vendor/angular-touch/angular-touch.js"></script>
+    <script src="/vendor/angular-messages/angular-messages.js"></script>
+    <script src="/vendor/angular-local-storage/dist/angular-local-storage.js"></script>
+    <script src="/vendor/number-to-words/numberToWords.min.js"></script>
+    <!-- endbower -->
+
+    <!-- inject:js -->
+    <script src="/app/app.mdl.js"></script>
+    <script src="/app/common/layout/layout.mdl.js"></script>
+    <script src="/app/common/services/srv.mdl.js"></script>
+    <script src="/app/common/layout/layout.ctrl.js"></script>
+    <script src="/app/common/services/searchesStorage.srv.js"></script>
+    <script src="/app/common/services/soundCloudApi.srv.js"></script>
+    <script src="/app/core/dashboard/dashboard.mdl.js"></script>
+    <script src="/app/core/dashboard/dashboard.ctrl.js"></script>
+    <!-- endinject -->
+
+    <script src="https://connect.soundcloud.com/sdk/sdk-3.1.2.js"></script>
+
+    <!-- inject:build:js -->
+    <!-- endinject -->
+</body>
+</html>

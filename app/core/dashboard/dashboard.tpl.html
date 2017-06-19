@@ -1,0 +1,77 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">Search Tracks</div>
+            <div class="panel-body">
+                <form class="form-inline">
+                    <div class="form-group">
+                        <input ng-model="trackSearch.query" type="text" class="form-control" id="search-tracks" placeholder="Search for tracks">
+                    </div>
+                    <button type="submit" class="btn btn-default" ng-click="searchTracks(trackSearch.query, 1)">Search</button>
+                </form>
+                <hr>
+                <div ng-show="tracks">
+                    <div ng-if="listStyle.type == 'tile'">
+                        <ul class="list-group tracks-list">
+                            <li class="list-group-item list-group-item-tile" ng-repeat="track in tracks track by $index" ng-click="selectTrack($index)">
+                                <img src="{{ track.artwork_url }}" alt="">
+                            </li>
+                        </ul>
+                    </div>
+                    <div ng-if="listStyle.type == 'list'">
+                        <ul class="list-group tracks-list">
+                            <li class="list-group-item" ng-repeat="track in tracks track by $index" ng-click="selectTrack($index)">
+                                LIST {{ track.title }}
+                            </li>
+                        </ul>
+                    </div>
+                    <button class="btn btn-success" ng-click="back()" ng-disabled="currentSearch.currentPage == 1">
+                        <span class="glyphicon glyphicon-arrow-left"></span>
+                    </button>
+                    <button class="btn btn-success" ng-click="next()" ng-disabled=" ! currentSearch.hasNext">
+                        <span class="glyphicon glyphicon-arrow-right"></span>
+                    </button>
+
+                    <div class="pull-right">
+                        <button class="btn btn-primary" ng-click="listStyle.type = 'list'">
+                            <span class="glyphicon glyphicon-th-list"></span>
+                        </button>
+                        <button class="btn btn-primary" ng-click="listStyle.type = 'tile'">
+                            <span class="glyphicon glyphicon-th-large"></span>
+                        </button>
+                    </div>
+                </div>
+                <div ng-show=" ! tracks">
+                    No tracks to display
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">Track Details</div>
+            <div class="panel-body">
+                <div ng-if="currentSearch.selectedTrack">
+                    <h4>{{ currentSearch.selectedTrack.title }}</h4>
+                    <div class="image-container" ng-style="{ 'background-image': 'url(' + currentSearch.selectedTrack.artwork_url + ')'  }"></div>
+                    <button class="btn btn-primary" ng-click="selectedTrackPlayer('play')"> <span class="glyphicon glyphicon-play"></span> Play</button>
+                    <button class="btn btn-default" ng-click="selectedTrackPlayer('pause')"> <span class="glyphicon glyphicon-pause"></span> Pause</button>
+                </div>
+                <div ng-if=" ! currentSearch.selectedTrack">
+                    No track Selected
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">Recent Searches</div>
+            <div class="panel-body">
+                <button ng-click="searchTracks(search, 1)" class="btn btn-default btn-sm search-btn" ng-repeat="search in searches">
+                    {{ search }}
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
